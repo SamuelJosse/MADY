@@ -1,0 +1,19 @@
+site_name: MadyDoc
+nav:
+    - Accueil: index.md
+    - Ouvrir le menu: menu.md
+    - Créer un compte: inscription.md
+    - Se connecter: connexion.md
+    - Se déconnecter: disconnect.md
+    - Modifier ses informations: settings.md
+    - Modifier son mot de passe: password.md
+    - Role livreur: livraison.md
+    - Role commercant: commercant.md
+    - Role producteur: producteur.md
+    - Développeurs:
+        - Base de données: database.md
+        - La récupération des commandes: recup.md
+        - Les sessions: sessions.md
+    - Supprimer son compte: delete.md
+    - A propos: about.md
+theme: readthedocs

@@ -1,0 +1,7 @@
+existe                 ( nouvelle commande que aucun livreur n'a vu )
+notifie                ( vu par un ou plusieurs livreurs)
+selectionne            ( mission prise par un livreur  mais il n'est pas encore aller la cherchez chez le producteur )
+prise                  ( en cour de livraison vers le commercant )
+livre                  ( le livreur la récupérer et a scanner le qrcode )
+
+ 
