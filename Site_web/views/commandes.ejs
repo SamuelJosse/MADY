@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Accueil</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <script src="https://kit.fontawesome.com/d28dcfa7e3.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="css/commande.css">
+		<link rel="stylesheet" href="css/main_home.css">
+		<link rel="stylesheet" href="css/uikit.min.css" />
+		<script src="js/uikit.min.js"></script>
+		<script src="js/uikit-icons.min.js"></script>
+
+		<script>
+		function lien() {
+			var selectElmt = document.getElementById("liste");
+			var valeurselectionnee = selectElmt.options[selectElmt.selectedIndex].value;
+			var textselectionne = selectElmt.options[selectElmt.selectedIndex].text;
+			console.log(valeurselectionnee);
+			console.log(textselectionne);
+			//document.getElementById("someId").value = valeurselectionnee;
+		}
+		</script>
+		
+	</head>
+	<body class="is-preload">
+
+		<div id="header">
+
+			<div class="top">
+
+				<!-- Logo -->
+					<div id="logo">
+						<span class="image avatar48"><i class="far fa-user"></i></span>
+						<h1 id="title"><%= name +" "+surname%></h1>
+						<p><%= role %></p>
+					</div>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+			
+						<form action="/" method="POST" id="form_home">
+							<li><a href="#home" id="top-link" onclick="document.getElementById('form_home').submit()"><span class="icon solid fa-home">Accueil</span></a></li>
+						</form>
+						<% if(role == "Livreur"){ %>
+							<form action="/map" method="POST" id="form_map">
+								<li><a href="#map" id="map-link" onclick="document.getElementById('form_map').submit()"><span class="icon solid fa-th">Ma carte</span></a></li>
+							</form>
+						<%}else{%>
+							<form action="/commandes" method="POST" id="form_map">
+								<li><a href="#commandes" id="commandes-link" onclick="document.getElementById('form_map').submit()"><span class="icon solid fa-th">Mes commandes</span></a></li>
+							</form>
+						<%} %>
+						<% if(role == "Commercant"){ %>
+							<form action="/qrViewer" method="GET" id="form_qrcode">
+								<li><a href="#qrViewer" id="qrcode-link" onclick="document.getElementById('form_qrcode').submit()"><span class="icon solid fa-qrcode">Scanner un QRcode</span></a></li>
+							</form>
+						<%}%>
+						<form action="/setting" method="GET" id="form_setting">
+							<li><a href="#setting" id="setting-link" onclick="document.getElementById('form_setting').submit()"><span class="icon solid fa-user">Parametres</span></a></li>
+						</form>
+						<form action="/disconnect" method="POST" id="form_disconnect">
+							<li><a href="#disconnect" id="disconnect-link" onclick="document.getElementById('form_disconnect').submit()"><span class="icon solid fa-door-open">Sortie</span></a></li>
+						</form>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+
+		<!-- Main -->
+		
+		<div class="global">
+			
+			<div id="main" class="main">
+				<div class="form">
+					<form action="commandes" method="get">
+						<div class="left">
+							<select id="liste" name="liste" onchange="lien()">
+								<option value="tout">Tout</option>
+								<option value="existe">Existe</option>
+								<option value="notifie">Notifie</option>
+								<option value="selectionne">Selectionne</option>
+								<option value="prise">Prise</option>
+								<option value="livre">Livre</option>
+							</select>
+						</div>
+						<div class="right">
+							<input id="someId" type="submit" name="choix" value="GO">
+						</div>
+						
+					</form>
+				</div>
+					<%if(role == "Commercant") {%>
+						<% for (var i =0; i <tab.length; i++ ) { %>
+							<div class="qrcode">
+								<div class="qrcode-text">
+									<p>  <%= "La commande numéro "+tab[i][0]+ "de "+tab[i][2]+ " m3 est expédié par "+tab[i][1]+"." %></p>
+									<span><%="Etat : "+tab[i][3] %></span> 
+								</div>
+							</div>
+						<%}%>
+					<%} else {%>
+						<div class="qrcode-container">
+							
+							<% for (var i =0; i <tab.length; i++ ) { %>
+								<div class="qrcode">
+									<div class="qrcode-text">
+										<p> <%= "La commande numéro "+tab[i][0]+ "de "+tab[i][2]+ " m3 est expédié a "+tab[i][1]+"." %> </p> 
+										<span><%="    Son état : "+tab[i][3] %></span> 
+									</div>								
+									<button class="button" onclick="loadQR('<%=tab[i][4]%>')"> Generer un qrcode</button>
+										<script>
+											function loadQR(timeStamp){
+												window.open('/qrGenerator?commandTimestamp='+timeStamp,'_blank');
+											}
+										</script>
+								</div>
+								
+							<%}%>
+						</div>
+						
+					<%}%>  
+			</div>
+		</div>
+		
+
+
+
+        <!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/jquery.scrolly.min.js"></script>
+			<script src="js/jquery.scrollex.min.js"></script>
+			<script src="js/browser.min.js"></script>
+			<script src="js/breakpoints.min.js"></script>
+			<script src="js/util_home.js"></script>
+			<script src="js/main_home.js"></script>
+    </body>
+</html>

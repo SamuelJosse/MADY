@@ -1,0 +1,40 @@
+body{
+    background-color: #2ecc71;
+}
+.container{
+    background-color:rgba(52, 152, 115, 1) ;
+}
+.logo{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 50%;
+    display: block;
+}
+.row-sign{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+    color: white;
+    margin-top: 5%;
+}
+.slct{
+    margin-left: 25%; 
+    margin-right: 25%;
+    margin-top: 10%;
+}
+.choice{
+    margin:auto;
+    margin-top: 10% !important; 
+    color: white;
+}
+.sbmt-sign{
+    margin:auto;
+    margin-top: 10% !important; 
+}
+.btn-sign{
+    background-color: rgba(52, 152, 115, 0.9); 
+    color: white;
+}
+.sbmt{
+    margin: auto;
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Accueil</title>
+		<meta charset="utf-8" />
+		<meta name="viewport"  content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="css/main_home.css" />
+		<link rel="stylesheet" href="css/main_home_v2.css" />
+		<script src="https://kit.fontawesome.com/d28dcfa7e3.js" crossorigin="anonymous"></script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+					<% if(connected){ %>
+						<% if(comm == "commercant"){ %>
+							<script>
+							window.alert("Vous n'avez pas de commande à récupérer");
+							</script>
+						<%}%>
+						<%if(comm == "producteur"){ %>
+							<script>
+							window.alert("Vous n'avez aucune commandes à donner");
+							</script>
+						<%}%>
+						<%if(comm == "notifL"){ %>
+							<script>
+							window.alert("Vous avez bien pris la commande");
+							</script>
+						<%}%>
+						<%if(comm == "notifC"){ %>
+							<script>
+							window.alert("La commande a bien été livrée");
+							</script>
+						<%}%>
+						<%if(comm == "notifE"){ %>
+							<script>
+							window.alert("QRcode eronné");
+							</script>
+						<%}%>
+						<!-- Logo -->
+							<div id="logo">
+								<span class="image avatar48"><i class="far fa-user"></i></span>
+								<h1 id="title"><%= name +" "+surname%></h1>
+								<p><%= role %></p>
+							</div>
+
+							<!-- Nav -->
+							<nav id="nav">
+								<ul>
+						
+									<form action="/" method="POST" id="form_home">
+										<li><a href="#home" id="top-link" onclick="document.getElementById('form_home').submit()"><span class="icon solid fa-home">Accueil</span></a></li>
+									</form>
+									<% if(role == "Livreur"){ %>
+										<form action="/map" method="POST" id="form_map">
+											<li><a href="#map" id="map-link" onclick="document.getElementById('form_map').submit()"><span class="icon solid fa-th">Ma carte</span></a></li>
+										</form>
+									<%}else{%>
+										<form action="/commandes" method="POST" id="form_map">
+											<li><a href="#commandes" id="commandes-link" onclick="document.getElementById('form_map').submit()"><span class="icon solid fa-th">Mes commandes</span></a></li>
+										</form>
+									<%} %>
+									<% if(role == "Commercant"){ %>
+										<form action="/qrViewer" method="GET" id="form_qrcode">
+											<li><a href="#qrViewer" id="qrcode-link" onclick="document.getElementById('form_qrcode').submit()"><span class="icon solid fa-qrcode">Scanner un QRcode</span></a></li>
+										</form>
+									<%}%>
+									<form action="/setting" method="GET" id="form_setting">
+										<li><a href="#setting" id="setting-link" onclick="document.getElementById('form_setting').submit()"><span class="icon solid fa-user">Parametres</span></a></li>
+									</form>
+									<form action="/disconnect" method="POST" id="form_disconnect">
+										<li><a href="#disconnect" id="disconnect-link" onclick="document.getElementById('form_disconnect').submit()"><span class="icon solid fa-door-open">Sortie</span></a></li>		
+									</form>	
+								</ul>
+							</nav>
+					<%}else{%>
+							<!-- Logo -->
+							<div id="logo">
+								<span class="image avatar48"><i class="far fa-user"></i></span>
+							</div>
+
+							<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<form action="/" method="POST" id="form_home">
+										<li><a href="" id="top-link" onclick="document.getElementById('form_home').submit()"><span class="icon solid fa-home">Accueil</span></a></li>
+									</form>	
+									
+
+								</ul>
+							</nav>
+					<%} %>
+					
+
+				</div>
+
+				
+
+			</div>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Intro -->
+				<section id="top" class="one dark cover">
+					<div class="container">
+
+						<header>
+							<img src="images/logo_mady_small.svg" class="logo">
+							<h2 class="title">Pour une alimentation durable</h2>
+							<% if(!connected){ %>
+
+							
+							<div class="fields btns area_btn">
+								<div class="btns area_btn">
+									<form action="sign" method="GET" id="form_sign">
+										<button class="btn btn-sign"  type="button" onclick="document.getElementById('form_sign').submit()">Inscription</button>
+									</form>
+								</div>
+								<div class="btns area_btn">
+									<form action="login" method="GET" id="form_login">
+										<button class="btn btn-login"  type="button" onclick="document.getElementById('form_login').submit()">Connexion</button>
+									</form>
+								</div>
+							</div>
+							<% } %>
+						</header>
+
+
+
+					</div>
+				</section>
+
+			<!-- Portfolio -->
+				<section id="portfolio" class="two">
+					<div class="container">
+
+						<header>
+							<h2>Présentation du projet</h2>
+						</header>
+
+						<div class="row">
+							<div class="col-6 col-12-mobile">
+								<article class="item">
+									<h4>Origine et motivations</h4>
+									<a href="#" class="image "><img src="images/origine.PNG" alt="" /></a>
+									
+								</article>
+								<article class="item">
+									<h4>Le lab MADY & Co, un lieu ressource</h4>
+									<a href="#" class="image fit"><img src="images/lieu.PNG" alt="" /></a>
+								</article>
+							</div>
+							<div class="col-6 col-12-mobile">
+								<article class="item">
+									<h4>La MADY, incarnation du lab MADY & Co</h4>
+									<a href="#" class="image "><img src="images/Capture.PNG" alt="" /></a>
+								
+								</article>
+								<article class="item">
+									<h4>Le lab MADY & Co ?</h4>
+									<a href="#" class="image "><img src="images/lab.png" alt="" /></a>
+
+								</article>
+							</div>
+							<div class="col-12 col-12-mobile">
+								<article class="item">
+								
+								</article>
+								<article class="item">
+									<h4>Le scénario du service de livraison</h4>
+									<a href="#" class="image fit"><img src="images/service.PNG" alt="" /></a>
+									
+								</article>
+							</div>
+							
+						</div>
+
+					</div>
+				</section>
+
+			
+
+			<!-- Contact -->
+			<section id="contact" class="four">
+				<div class="container">
+
+					<header>
+						<h2 class="title" style="color: black;">Contact</h2>
+					</header>
+
+
+					<form method="post" action="mail">
+						<div class="row">
+							<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
+							<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
+							<div class="col-12">
+								<textarea name="message" placeholder="Message"></textarea>
+							</div>
+							<div class="col-12">
+								<input class="btn btn-mail" style="width: auto" type="submit" value="Envoyer Message" />
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<div id="footer">
+
+				<ul class="copyright">
+					<li style="font-size: 22px;">&copy; Mady & Co. All rights reserved.Mady</li>
+				</ul>
+
+		</div>
+
+
+
+		<!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/jquery.scrolly.min.js"></script>
+			<script src="js/jquery.scrollex.min.js"></script>
+			<script src="js/browser.min.js"></script>
+			<script src="js/breakpoints.min.js"></script>
+			<script src="js/util_home.js"></script>
+			<script src="js/main_home.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,104 @@
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 300px;
+    min-height: 100vh;
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(../css/images/bois.jpg) center center /cover  no-repeat !important;
+  }
+
+.form{
+	margin-top: -5%;
+    padding: -1% 2% 5% 2%;
+	display: flex;
+	flex: auto;
+	
+
+	
+}
+
+select{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.left{
+   
+    float: left;
+    margin-right: 10px;;
+}
+
+
+.right{
+    float:right;
+}
+  
+
+
+
+
+
+.button{
+	width: -moz-fit-content;
+	height: min-content;
+    text-align: center;
+    position: relative;
+    border: none;
+    border-radius: 15px;
+    display: inline-block;
+    color: #fff !important;
+    text-decoration: none;
+    padding: 0.75em 2.5em 0.75em 2.5em;
+    background-color: #349872;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+
+}
+#someId{
+    width: -moz-fit-content;
+	height: min-content;
+    text-align: center;
+    position: relative;
+    border: none;
+    border-radius: 15px;
+    display: inline-block;
+    color: #fff !important;
+    text-decoration: none;
+    background-color: #349872;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    padding:5px;
+}
+.main{
+	display: grid;
+    grid-gap: 1rem;
+	color: white !important;
+
+}
+.main > p{
+
+}
+.colis-container{
+	
+}
+.qrcode-container{
+	display: flex;
+	flex-direction: column;
+}
+.qrcode-text > p{
+	margin-bottom: 0;
+}
+.qrcode{
+	padding: 5% 2% 5% 2%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	flex-direction: row;
+	flex: auto;
+	align-items: center;
+	justify-content: center;
+}

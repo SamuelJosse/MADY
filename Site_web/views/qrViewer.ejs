@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <title>QRViewer</title>
+        <link rel="stylesheet" href="css/qr_viewer.css">
+        <link rel="stylesheet" href="css/style_map.css">
+        <script src="https://kit.fontawesome.com/d28dcfa7e3.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <link rel="icon" href="./favicon.ico" />
+        <script src="js/recupMission.js"></script>
+        <script src="js/jquery.min.js"></script>
+	    <script src="js/instascan.min.js"></script>
+    </head>
+    <body>
+        <div id="header">
+
+            <div class="top">
+    
+                    <!-- Logo -->
+                        <div id="logo">
+                            <span class="image avatar48"><i class="far fa-user"></i></span>
+                            <h1 id="title"><%= name +" "+surname%></h1>
+                            <p><%= role %></p>
+                        </div>
+    
+                        <!-- Nav -->
+                        <nav id="nav">
+                            <ul>
+                    
+                                <form action="/" method="POST" id="form_home">
+                                    <li><a href="#home" id="top-link" onclick="document.getElementById('form_home').submit()"><span class="icon solid fa-home">Accueil</span></a></li>
+                                </form>
+                                <% if(role == "Livreur"){ %>
+                                    <form action="/map" method="POST" id="form_map">
+                                        <li><a href="#map" id="map-link" onclick="document.getElementById('form_map').submit()"><span class="icon solid fa-th">Ma carte</span></a></li>
+                                    </form>
+                                <%}else{%>
+                                    <form action="/commandes" method="POST" id="form_map">
+                                        <li><a href="#commandes" id="commandes-link" onclick="document.getElementById('form_map').submit()"><span class="icon solid fa-th">Mes commandes</span></a></li>
+                                    </form>
+                                <%} %>
+                                <form action="/setting" method="GET" id="form_setting">
+                                    <li><a href="#setting" id="setting-link" onclick="document.getElementById('form_setting').submit()"><span class="icon solid fa-user">Parametres</span></a></li>
+                                </form>
+                                <form action="/disconnect" method="POST" id="form_disconnect">
+                                    <li><a href="#disconnect" id="disconnect-link" onclick="document.getElementById('form_disconnect').submit()"><span class="icon solid fa-door-open">Sortie</span></a></li>
+                                </form>
+                            </ul>
+                        </nav>
+            </div>
+        </div>
+        <div class="border">
+            <h1>QR viewer</h1>
+            <div class="center">
+                <video id="preview"></video>
+            </div>
+            <div class="down">
+                <h2 id="status">QRcode : recherche</h2>
+            </div>
+            <div class="form">
+                <form action="qrViewer" method="post">
+                    <input type="text" id="qrValue" name="commandTimestamp" value="0" hidden>
+                    <input id="someId" type="submit" name="submit" value="Valider" disabled>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/script_map.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.scrolly.min.js"></script>
+        <script src="js/jquery.scrollex.min.js"></script>
+        <script src="js/browser.min.js"></script>
+        <script src="js/breakpoints.min.js"></script>
+        <script src="js/util_home.js"></script>
+        <script src="js/main_home.js"></script>
+        <script src="js/qrcode.min.js"></script>
+            
+
+            <script type="text/javascript">
+
+                Instascan.Camera.getCameras()
+                .then(function (cameras) {
+                    if (cameras.length > 0) {
+
+                        let scanner = undefined;
+                        scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+                        scanner.addListener('scan', function (content) {
+                    
+                            if ( content ){
+                                document.getElementById("status").innerHTML = "Commande scanné : " + content;
+                                document.getElementById("qrValue").value = content;
+                                document.getElementById("someId").disabled = false;
+                            } else {
+                                document.getElementById("status").innerHTML = "QRcode : recherche";
+                                document.getElementById("someId").disabled = true;
+                            }
+
+                        });
+
+                        scanner.start(cameras[0]);
+                        
+                        
+                    } else {
+                        document.getElementById("status").innerHTML = "QRcode : " + " pas de caméra détecté ! ";
+                        document.getElementById("someId").disabled = true;
+                    }
+                })
+                .catch(function (e) {
+                    document.getElementById("status").innerHTML = "QRcode : " + " error ";
+                    document.getElementById("someId").disabled = true;
+                });
+
+
+            </script>
+            
+    </body>
+</html>

@@ -1,0 +1,85 @@
+
+body{
+  
+    min-height: 100vh;
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(../css/images/bois.jpg) center center /cover  no-repeat !important;
+
+  }
+h1{
+    text-align: center;
+    color:black;
+    font-family: sans-serif;
+}
+
+.border{
+    border :solid grey 2px;
+    background: white;
+
+    width: 600px;
+    height: 550px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    margin-left: auto;
+    margin-right: auto;
+
+
+
+}
+
+.button{
+    width: -moz-fit-content;
+	height: min-content;
+    text-align: center;
+    position: relative;
+    border: none;
+    border-radius: 15px;
+    display: inline-block;
+    color: #fff !important;
+    text-decoration: none;
+    padding: 0.75em 2.5em 0.75em 2.5em;
+    background-color: #349872;
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 20px;
+    margin-bottom:20px;
+    cursor: pointer;
+}
+
+
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.down{
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#someId{
+    padding:8px;
+    background-color: #349872;
+    color: white;
+    border:2px solid black;
+    border-radius: 15px;
+    font-size: 30px;
+
+}
+h2{
+    padding-right: 20px;
+}
+
+video{
+    width:550px;
+}

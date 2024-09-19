@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style_form_sign.css">		
+    <script src="https://kit.fontawesome.com/d28dcfa7e3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <link rel="icon" href="./favicon.ico" />
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <title>Mady&Co | Inscription</title>
+</head>
+<body>
+    <div id="header">
+
+        <div class="top">
+            <!-- Logo -->
+            <div id="logo">
+                <span class="image avatar48"><i class="far fa-user"></i></span>
+            </div>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <form action="/" method="POST" id="form_home">
+                        <li><a href="#home" id="top-link" onclick="document.getElementById('form_home').submit()"><span class="icon solid fa-home">Accueil</span></a></li>
+                    </form>
+                </ul>
+            </nav>
+        </div>
+
+
+
+    </div>
+    <div class="container">
+        <img src="img/logo_mady_small.svg" class="logo">
+        <header>S'inscrire</header>
+        <div class="progress-bar">
+            <div class="step">
+                <p>Identité</p>
+                <div class="bullet">
+                    <span>1</span>
+                </div>
+                <div class="check fas fa-check"></div>
+            </div>
+            <div class="step">
+                <p>Contact</p>
+                <div class="bullet">
+                    <span>2</span>
+                </div>
+                <div class="check fas fa-check"></div>
+            </div>
+            <div class="step">
+                <p>Rôle</p>
+                <div class="bullet">
+                    <span>3</span>
+                </div>
+                <div class="check fas fa-check"></div>
+            </div>
+            <div class="step">
+                <p>MDP</p>
+                <div class="bullet">
+                    <span>4</span>
+                </div>
+                <div class="check fas fa-check"></div>
+            </div>
+        </div>
+        <div class="form-outer">
+            <form action="/sign" method="POST">
+                <div class="page slidepage">
+                    <div class="title">Vous</div>
+                    <div class="field">
+                        <div class="label">Nom</div>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="field">
+                        <div class="label">Prénom</div>
+                        <input type="text" name="surname" id="surname">
+                    </div>
+                    <div class="label" id="alert">
+                        <p><%= error %></p>                                              <!-- error message -->
+                    </div>
+                    <div class="field nextBtn">
+                       <button onclick="launch()" type="button">Suivant</button>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="title">Contact Info</div>
+                    <div class="field">
+                        <div class="label">Mail</div>
+                        <input type="email" name="mail" id="mail">
+                    </div>
+                    <div class="field">
+                        <div class="label">Téléphone</div>
+                        <input type="number" name="phone" id="phone">
+                    </div>
+                    <div class="label" id="alert_2"></div>
+                    <div class="field btns">
+                       <button class="prev-2 prev"  type="button">Retour</button>
+                       <button class="next-2 next"  type="button">Suivant</button>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="title">Votre rôle </div>
+                    <div class="field">
+                        <select class="choice" name="role">
+                            <option>Commerçant</option>
+                            <option>Livreur</option>
+                            <option>Producteur</option>
+                        </select>
+                    </div>
+                    <div class="label" id="alert_3"></div>
+                    <div class="field btns">
+                       <button class="prev-3 prev"  type="button">Retour</button>
+                       <button class="next-3 next"  type="button">Suivant</button>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="title">Rayon de livraison </div>
+                    <div class="field" >
+                        <select class="distance" name="distance">
+                            <option value="1">1 km</option>
+                            <option value="5">5 km</option>
+                            <option value="10">10 km</option>
+                            <option value="1000000">+ 10 km</option>
+                        </select>
+                    </div>
+                    <div class="title">Moyen de locomotion </div>
+                    <div class="field">
+                        <select class="vehicule" name="vehicule">
+                            <option>Voiture</option>
+                            <option>Moto</option>
+                            <option>Vélo</option>
+                            <option>Camion</option>
+                        </select>
+                    </div>
+                    <div class="label" id="alert_4"></div>
+                    <div class="field btns area_btn_select">
+                        <button class="prev-4 prev"  type="button">Retour</button>
+                        <button class="next-4 next"  type="button">Suivant</button>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="title">Nom de societe </div>
+                    <div class="field">
+                        <div class="label">Nom de societe</div>
+                        <input type="text" name="societe" id="societe">
+                    </div>
+                    <div class="label" id="alert_5">
+                    </div>
+                    <div class="field btns">
+                        <button class="prev-5 prev"  type="button">Retour</button>
+                        <button class="next-5 next"  type="button">Suivant</button>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="title">Mot de passe </div>
+                    <div class="field">
+                        <div class="label">Mot de passe</div>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <div class="field">
+                        <div class="label">Retaper le mot de passe</div>
+                        <input type="password" name="repassword" id="repassword">
+                    </div>
+                    <div class="label" id="alert_6">
+
+                    </div>
+                    <div class="field btns">
+                        <button class="prev-6 prev"  type="button">Retour</button>
+                        <button class="submit"  type="submit">Créer le compte</button>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+
+    </div>
+
+		<!-- Scripts -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.scrolly.min.js"></script>
+        <script src="js/jquery.scrollex.min.js"></script>
+        <script src="js/browser.min.js"></script>
+        <script src="js/breakpoints.min.js"></script>
+        <script src="js/util_home.js"></script>
+        <script src="js/main_home.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"  content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="css/style_map.css">
+
+    <script src="https://kit.fontawesome.com/d28dcfa7e3.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <link rel="icon" href="./favicon.ico" />
+    <script src="js/recupMission.js"></script>
+
+
+    <title>Mady&Co | Map</title>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body onload="recupMission()">
+    <div id="header">
+
+        <div class="top">
+
+                <!-- Logo -->
+                    <div id="logo">
+                        <span class="image avatar48"><i class="far fa-user"></i></span>
+                        <h1 id="title"><%= name +" "+surname%></h1>
+                        <p><%= role %></p>
+                    </div>
+
+                    <!-- Nav -->
+                    <nav id="nav">
+                        <ul>
+                
+                            <form action="/" method="POST" id="form_home">
+                                <li><a href="#home" id="top-link" onclick="document.getElementById('form_home').submit()"><span class="icon solid fa-home">Accueil</span></a></li>
+                            </form>
+                            <% if(role == "Livreur"){ %>
+                                <form action="/map" method="POST" id="form_map">
+                                    <li><a href="#map" id="map-link" onclick="document.getElementById('form_map').submit()"><span class="icon solid fa-th">Ma carte</span></a></li>
+                                </form>
+                            <%}else{%>
+                                <form action="/commandes" method="POST" id="form_map">
+                                    <li><a href="#commandes" id="commandes-link" onclick="document.getElementById('form_map').submit()"><span class="icon solid fa-th">Mes commandes</span></a></li>
+                                </form>
+                            <%} %>
+                            <form action="/setting" method="GET" id="form_setting">
+                                <li><a href="#setting" id="setting-link" onclick="document.getElementById('form_setting').submit()"><span class="icon solid fa-user">Parametres</span></a></li>
+                            </form>
+                            <form action="/disconnect" method="POST" id="form_disconnect">
+                                <li><a href="#disconnect" id="disconnect-link" onclick="document.getElementById('form_disconnect').submit()"><span class="icon solid fa-door-open">Sortie</span></a></li>
+                        </ul>
+                    </nav>
+        </div>
+    </div>
+    <div class="container" id="map">
+        <% if(dispo){ %>
+        <span class="dot-notif" ><a href="#modal-notif" uk-toggle><i class="far fa-bell fa-3x"></i></a></span>
+        <% } %>
+        <span class="dot-infos" ><a href="#modal-infos" uk-toggle><i class="fas fa-info fa-3x"></i></a></span>
+        <span class="dot-qr" ><a href="qrViewer" uk-toggle><i class="fas fa-qrcode fa-3x"></i></a></span>
+        <span class="dot-refresh" ><a href="map" uk-toggle><i class="fas fa-sync fa-3x"></i></a></span>
+    </div>
+
+    </div>
+    <!-- Scripts -->
+    <script type="text/javascript" src="js/script_map.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.scrolly.min.js"></script>
+	<script src="js/jquery.scrollex.min.js"></script>
+	<script src="js/browser.min.js"></script>
+	<script src="js/breakpoints.min.js"></script>
+	<script src="js/util_home.js"></script>
+    <script src="js/main_home.js"></script>
+    <script src="js/qrcode.min.js"></script>
+
+</body>
+<div id="modal-infos" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body" style="height: 100%;">
+        <p>
+            <div id="instructions">
+
+            </div>
+        </p>
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Fermer</button>
+        </p>
+    </div>
+</div>
+
+
+
+<!-- This is the modal -->
+<div id="modal-notif" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">Notification</h2>
+        <div id="colis">
+
+        </div>
+        
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Fermer</button>
+        </p>
+    </div>
+</div>
+</html>

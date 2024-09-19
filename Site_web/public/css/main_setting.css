@@ -1,0 +1,33 @@
+.line{
+    display: flex;
+}
+.line > .container_form > input{
+    height: auto !important;
+    width: 90% !important;
+}
+.line > .container_form {
+    flex: 1;
+}
+.container_form{
+    margin-top: 5%;
+}
+.container_form > .submit{
+    width: 50% !important;
+    padding: 5px 5px 5px 5px !important;
+    color: white !important;
+}
+select{
+    border:  1px solid lightgrey;
+    border-radius: 5 px;
+}
+.pws_link{
+    text-decoration: none;
+    font-size: small;
+    color: black;
+
+}
+.pws_link:hover{
+    text-decoration: none;
+    color: #2ecc71;
+    transition: .2s;
+}

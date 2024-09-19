@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/qr_generator.css">
+        <title>QRCode generator</title>
+        <script>
+            function printImg(url) {
+                var win = window.open('');
+                win.document.write('<img src="' + url + '" onload="window.print();window.close()" />');
+                win.focus();
+            }
+
+            function downloadURI(uri, name) 
+            {
+                var link = document.createElement("a");
+                link.download = name;
+                link.href = uri;
+                link.click();
+            }
+        </script>
+    </head>
+    <body>
+        <div class="border">
+            <div class="top">
+                <h1>QR code generator</h1>
+            </div>
+            <div class="center">
+                <img src="<%=url%>" alt="qrcode of the order">
+            </div>
+            <div class="down">
+                <button class="button" onclick="printImg('<%=url%>')">Imprimer</button>
+                <button class="button" onclick="downloadURI('<%=url%>','qrcode')">Télécharger</button>
+                <button class="button" onclick="window.open('/','_blank')">Retour au menu principal</button>
+            </div>
+        </div>
+    </body>
+</html>
